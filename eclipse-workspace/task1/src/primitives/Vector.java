@@ -116,15 +116,24 @@ public class Vector {
 	 * 
 	 * @param v
 	 * @return this vector dot v vector
+	 * 
+	 * https://www.geeksforgeeks.org/program-dot-product-cross-product-two-vector/
 	 */
-	//dotProduct - there is no multiplay by 0 
-	public double dotProduct(Vector v) {
-		double ans = this.size*v.size;
-		double ang1 = this.north_angle(v); 
-		return ans*ang1;
-
-	}
 	
+	
+	public double dotProduct(Vector b) 
+    { 
+  
+        double product = 0; 
+  
+        // Loop for calculate cot product 
+            product = x * b.getX(); 
+            product += y * b.getY(); 
+            product += z * b.getZ(); 
+
+            
+        return product; 
+    } 
 	/**
 	 * 
 	 * @param v
@@ -134,7 +143,7 @@ public class Vector {
 	
 	public Vector crossProduct(Vector v) { // 
 	  
-		    double xx = this.x * v.y - this.z * v.y; 
+		    double xx = this.y * v.z - this.z * v.y; 
 		    double yy = this.z * v.x - this.x * v.z; 
 		    double zz = this.x * v.y - this.y * v.x; 
 		    
