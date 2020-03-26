@@ -2,33 +2,45 @@ package primitives;
 
 public class Ray {
 	
+	private Vector vec;
 	private Point3D point;
-	private double direction;
 
-	
 	/**
 	 * constructor
 	 * @param p
 	 * @param direc
 	 */
-	public Ray(Point3D p, double direc) {
-		point = new Point3D(p);
-		direction = direc;
+	
+	public Ray(Vector vec, Point3D point) {
+		super();
+		this.vec = vec;
+		this.point = point;
+	}
+	
+	/**
+	 * getters
+	 * @return
+	 */
+		
+
+	public Vector getVec() {
+		return vec;
 	}
 
-/**
- * getters
- * @return
- */
 	public Point3D getPoint() {
 		return point;
 	}
 
-
-	public double getDirection() {
-		return direction;
+	
+	/**
+	 * to string
+	 */
+	@Override
+	public String toString() {
+		return "Ray [vec=" + vec.toString() + ", point=" + point.toString() + "]";
 	}
 	
 	
+
 	
 }

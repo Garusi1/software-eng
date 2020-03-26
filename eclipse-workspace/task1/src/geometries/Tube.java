@@ -16,7 +16,7 @@ public class Tube extends RadialGeometry {
 	
 	public Tube(double _radius, Ray ax) {
 		super(_radius);
-		_axisRay = new Ray(ax.getPoint(), ax.getDirection());
+		_axisRay = new Ray(ax.getVec(),ax.getPoint());
 		// TODO Auto-generated constructor stub
 	}
 

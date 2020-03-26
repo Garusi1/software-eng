@@ -2,29 +2,34 @@ package primitives;
 
 public class Vector {
 
-	private double size; // I added it because it seems basic to me
-	private double angel; // I added it because it seems basic to me - i didn't have time to finish the auto calc inside the contructors
-	private double x,y,z; 
+	//private double size; // I added it because it seems basic to me
+	//private double angel; // I added it because it seems basic to me - i didn't have time to finish the auto calc inside the contructors
+	private Point3D p1; 
 
 	/**
 	 * getters
 	 * @return
 	 */
 	public double getX() {
-		return x;
+		return p1.getX();
 	}
 
 	
 	public double getY() {
-		return y;
+		return p1.getY();
 	}
 
 	public double getZ() {
-		return z;
+		return p1.getZ();
 	}
 
 	
-//	public Vector(double p, double angel) {
+public void setP1(Point3D p1) {
+		this.p1 = p1;
+	}
+
+
+	//	public Vector(double p, double angel) {
 //		this.size = p;
 //		this.angel = angel;
 //	}
@@ -36,39 +41,37 @@ public class Vector {
 	 */
 	public Vector(double x1, double y1, double z1) {
 		if(x1==0&&y1==0&&z1==0) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
- 		this.x = x1;
-		this.y = y1;
-		this.z = z1;
-		size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
+ 		
+		p1 = new Point3D(x1,y1,z1);
+		
+	//	size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
 
 	}
 
-	public Vector(double size, double angel, double x, double y, double z) {
-		if(x==0&&y==0&&z==0) throw new IllegalArgumentException("you can't add 0!!");// in case of zero vector the progrem will throw IllegalArgumentException
-
-		this.size = size;
-		this.angel = angel;
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
+//	public Vector(double size, double angel, double x, double y, double z) {
+//		if(x==0&&y==0&&z==0) throw new IllegalArgumentException("you can't add 0!!");// in case of zero vector the progrem will throw IllegalArgumentException
+//		p1 = new Point3D(x,y,z);
+//
+//		this.size = size;
+//		this.angel = angel;
+//		this.x = x;
+//		this.y = y;
+//		this.z = z;
+//	}
 	public Vector(Point3D p) {
-		if(x==0&&y==0&&z==0) throw new IllegalArgumentException("you can't add 0!!");// in case of zero vector the progrem will throw IllegalArgumentException
+		if(p.getX()==0&&p.getY()==0&&p.getZ()==0) throw new IllegalArgumentException("you can't add 0!!");// in case of zero vector the progrem will throw IllegalArgumentException
 
-		x = 33;
-		y = p.getX();
-		z=p.getY();
-		x=p.getX();
-		size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
+		p1 = new Point3D(p);
+	
+	//	size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
 		
 	}
 	public Vector(Vector v) {
-		if(x==0&&y==0&&z==0) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
+		if(v.getX()==0&&v.getY()==0&&v.getZ()==0) throw new IllegalArgumentException("you can't add 0!!");// in case of zero vector the progrem will throw IllegalArgumentException
 
-		x=v.getX();
-		y=v.getY();
-		z=v.getZ();
-		size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
+		p1 = new Point3D(v.getX(),v.getY(),v.getZ());
+		
+		//size = Math.sqrt((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));
 
 	}
 	/**
@@ -77,9 +80,9 @@ public class Vector {
 	 * @return this vector subtract v1 vector
 	 */
 	public Vector subtract(Vector v1) {
-		double xx=x-v1.x;
-		double yy = y-v1.y;
-		double zz = z-v1.z;
+		double xx=  p1.getX()-v1.p1.getX();
+		double yy = p1.getY()-v1.getY();
+		double zz = p1.getZ()-v1.getZ();
 		
 		return new Vector(xx, yy, zz);
 	}
@@ -91,9 +94,9 @@ public class Vector {
 	 */
 	 
 	public Vector add(Vector v1) {
-		double xx=x+v1.x;
-		double yy = y+v1.y;
-		double zz = z+v1.z;
+		double xx=p1.getX()+v1.getX();
+		double yy = p1.getY()+v1.getY();
+		double zz = p1.getZ()+v1.getZ();
 		
 		return new Vector(xx, yy, zz);
 	}
@@ -105,9 +108,9 @@ public class Vector {
 	 */
 	
 	public Vector scale (double num) {
-		double xx = x*num;
-		double yy = y*num;
-		double zz = z*num;
+		double xx = p1.getX()*num;
+		double yy = p1.getY()*num;
+		double zz = p1.getZ()*num;
 		
 		return new Vector(xx,yy,zz);
 
@@ -127,9 +130,9 @@ public class Vector {
         double product = 0; 
   
         // Loop for calculate cot product 
-            product = x * b.getX(); 
-            product += y * b.getY(); 
-            product += z * b.getZ(); 
+            product = p1.getX() * b.getX(); 
+            product += p1.getY() * b.getY(); 
+            product += p1.getZ() * b.getZ(); 
 
             
         return product; 
@@ -143,9 +146,9 @@ public class Vector {
 	
 	public Vector crossProduct(Vector v) { // 
 	  
-		    double xx = this.y * v.z - this.z * v.y; 
-		    double yy = this.z * v.x - this.x * v.z; 
-		    double zz = this.x * v.y - this.y * v.x; 
+		    double xx = p1.getY() * v.getZ() - p1.getZ() * v.getY(); 
+		    double yy = p1.getZ() * v.getX() - p1.getX() * v.getZ(); 
+		    double zz = p1.getX() * v.getY() - p1.getY() * v.getX(); 
 		    
 		    return new Vector (xx,yy,zz);
 		
@@ -162,7 +165,7 @@ public class Vector {
 	
 	public double north_angle(Vector p) {
 		double ans = 0;
-		double a_rad = Math.atan2((p.y-y), (p.x-x));
+		double a_rad = Math.atan2((p.getY()-p1.getY()), (p.getX()-p1.getX()));
 		double a_deg = Math.toDegrees(a_rad);
 		if(a_deg<=90) ans = 90-a_deg;
 		else ans = 450-a_deg;
@@ -173,7 +176,7 @@ public class Vector {
 	 * @return length Squared of this vector
 	 */
 	public double lengthSquared() {
-		 return ((this.x)*(this.x)+(this.y)*(this.y)+(this.z)*(this.z));		
+		 return ((p1.getX())*(p1.getX())+(p1.getY())*(p1.getY())+(p1.getZ())*(p1.getZ()));		
 	}
 
 	/**
@@ -187,13 +190,17 @@ public class Vector {
 /**
  * normalize this vector
  */
-	public void normalize () {
+public Vector normalize () {
 		
-		double length = length();
-	       x = y/length;
-	       y = y/length;
-	       z=z/length;
 	
+		double length = length();
+
+	       this.p1.setX(p1.getX()/length);
+	       this.p1.setY(p1.getY()/length);
+	       this.p1.setZ(p1.getZ()/length);
+
+	
+	return this;
 	}
 	
 	/**
@@ -203,20 +210,24 @@ public class Vector {
 	      public Vector normalized() {
 	  		
 	  		double length = length();
-	  	       double xx = this.x/length;
-	  	     double yy = this.y/length;
-	  	     double zz = this.z/length;
-	  	     	return new Vector(xx,yy,zz);  	     
-	  	
+	  	  	System.out.println(p1.toString());
+
+	  	  	System.out.println(this);
+	  	     	return new Vector(p1.getX()/length,p1.getY()/length,p1.getZ()/length);  	     
+
 	      }
+
+	      public boolean equals(Vector v1) {
+	    	  return(p1.equals(v1.p1));
+	      }
+
+	@Override
+	public String toString() {
+		return "Vector [p1=" + p1.toString() + "]";
+	}
 
 	      /**
 	       * to string function
 	       */
-	      public String toString() {
-	    	  return ("x: "+x
-	    			  +"y: "+y
-	    			  +"z: " +z
-	    			  +"\nsize= " +size);
-	      }
+	    
 }

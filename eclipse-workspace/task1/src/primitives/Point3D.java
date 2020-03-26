@@ -1,5 +1,6 @@
 package primitives;
 
+
 //import com.sun.org.apache.bcel.internal.Const;
 
 public class Point3D {
@@ -136,5 +137,23 @@ public class Point3D {
   			  +"y: "+y
   			  +"z: " +z);
     }
+/**
+ * setters - for normalize vector
+ * @param x
+ */
+	public void setX(double x) {
+		this.x = x;
+	}
 
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public void setZ(double z) {
+		this.z = z;
+	}
+
+	public boolean equals(Point3D p1) {
+		return(x==p1.x&&y==p1.y&&z==p1.z);
+	}
 	}
