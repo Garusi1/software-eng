@@ -64,11 +64,10 @@ public class Point3D {
  */
 	public Vector subtract(Point3D p) {
 		//double si = Math.sqrt((p.x-this.x)*(p.x-this.x)+(p.y-this.y)*(p.y-this.y)+(p.z-this.z)*(p.z-this.z));
-		double x1 = p.x-x;
-		double y1 = p.y-y;
-		double z1 = p.z - z;
+		double x1 = this.getX()-p.getX();
+		double y1 = this.getY()-p.getY();
+		double z1 = this.getZ()-p.getZ();
 		Point3D p1 = new Point3D(x1,y1,z1);
-		double an = north_angle(p1);
 		
 		return new Vector(p1);
 	}
@@ -154,6 +153,6 @@ public class Point3D {
 	}
 
 	public boolean equals(Point3D p1) {
-		return(x==p1.x&&y==p1.y&&z==p1.z);
+		return(x==p1.getX()&&y==p1.getY()&&z==p1.getZ());
 	}
 	}

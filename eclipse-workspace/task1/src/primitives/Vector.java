@@ -80,7 +80,7 @@ public void setP1(Point3D p1) {
 	 * @return this vector subtract v1 vector
 	 */
 	public Vector subtract(Vector v1) {
-		double xx=  p1.getX()-v1.p1.getX();
+		double xx=  p1.getX()-v1.getX();
 		double yy = p1.getY()-v1.getY();
 		double zz = p1.getZ()-v1.getZ();
 		
@@ -210,9 +210,7 @@ public Vector normalize () {
 	      public Vector normalized() {
 	  		
 	  		double length = length();
-	  	  	System.out.println(p1.toString());
-
-	  	  	System.out.println(this);
+	  	  
 	  	     	return new Vector(p1.getX()/length,p1.getY()/length,p1.getZ()/length);  	     
 
 	      }
