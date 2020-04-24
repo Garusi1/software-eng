@@ -215,17 +215,27 @@ public Vector normalize () {
 
 	      }
 
-	      public boolean equals(Vector v1) {
-	    	  return(p1.equals(v1.p1));
+	      @Override
+	      public boolean equals(Object v1) {
+	    	  if (this==v1) return true; // check the reference first
+	    	  
+	    	  if (!(v1 instanceof Vector)) return false;  //test for: is p1 is Vector type?
+			
+	    	  Vector v = (Vector) v1;  // cast v1 to vector after the test above
+	    	  return(p1.equals(v.p1));
 	      }
-
+	      /**
+	       * to string function
+	       */
+	    
 	@Override
 	public String toString() {
 		return "Vector [p1=" + p1.toString() + "]";
 	}
 
-	      /**
-	       * to string function
-	       */
-	    
+	public static boolean isZero(double num) {
+		
+		return num==0;
+	}
+	      
 }

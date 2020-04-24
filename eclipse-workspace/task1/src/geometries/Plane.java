@@ -13,7 +13,14 @@ public class Plane implements Geometry {
 	 */
 	public Plane(Point3D p1, Point3D p2,Point3D p3) {
 		_p = new Point3D(p1);
-		_normal = null;
+
+			Vector vec1 = _p.subtract(p2);
+			Vector vec2 = _p.subtract(p3);
+			if ((vec1.crossProduct(vec2)).dotProduct(new Vector(_p)) == 0)//.normalize() -> ??
+			{ _normal = (vec1.crossProduct(vec2).normalize());} // *T*O*D*O*
+			else System.out.println(" " +(vec1.crossProduct(vec2)));
+			//else throw new IllegalArgumentException("The normal is False");//System.out.println((vec1.crossProduct(vec2)).dotProduct(new Vector(_p)))
+	
 	}
 	
 	/**
@@ -47,7 +54,7 @@ public class Plane implements Geometry {
 	@Override
 	public Vector getNormal(Point3D p) {
 		// TODO Auto-generated method stub
-		return null;
+		return _normal;
 	}
 	
 }

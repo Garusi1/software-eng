@@ -151,8 +151,15 @@ public class Point3D {
 	public void setZ(double z) {
 		this.z = z;
 	}
-
-	public boolean equals(Point3D p1) {
-		return(x==p1.getX()&&y==p1.getY()&&z==p1.getZ());
+	
+	@Override
+	public boolean equals(Object p1) {
+		if(this==p1) return true; // tests reference
+		
+		if(!(p1 instanceof Point3D)) return false; // test for: is p1 is point3d type?
+		
+		Point3D p = (Point3D) p1; // casting to point (after the check)
+		
+		return(x==p.getX()&&y==p.getY()&&z==p.getZ());
 	}
 	}
